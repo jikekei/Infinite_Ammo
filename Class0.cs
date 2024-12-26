@@ -17,7 +17,7 @@ using PlayerRoles;
 using Exiled.API.Interfaces;
 using System.ComponentModel;
 
-namespace Server_NapCha_ui_API
+namespace Class0
 {
     public class Config : IConfig
     {
