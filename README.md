@@ -13,10 +13,6 @@
 ```
 C:\Users\Administrator\AppData\Roaming\EXILED\Plugins
 ```
-config/onebot11_你的QQ号.json
-```
-```
- 
 2. 重启服务器以加载插件。
 
 ## 使用方法
