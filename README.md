@@ -1,6 +1,4 @@
-from pathlib import Path
-
-infinite_ammo_readme = """# Infinite_Ammo
+# Infinite_Ammo
 
 基于 **EXILED** 框架，适用于 **SCP: Secret Laboratory 14.1** 的无限子弹插件。
 
@@ -12,7 +10,12 @@ infinite_ammo_readme = """# Infinite_Ammo
 ## 安装说明
 
 1. 将插件放入 EXILED 插件目录：
+
 C:\Users\Administrator\AppData\Roaming\EXILED\Plugins
+
+yaml
+复制
+编辑
 
 2. 重启服务器以加载插件。
 
@@ -35,9 +38,3 @@ C:\Users\Administrator\AppData\Roaming\EXILED\Plugins
 
 - 邮箱：liseximt@outlook.com  
 - QQ：3037240065
-"""
-
-file_path = Path("/mnt/data/Infinite_Ammo_README.md")
-file_path.write_text(infinite_ammo_readme, encoding="utf-8")
-
-file_path
