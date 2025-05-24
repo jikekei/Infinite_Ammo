@@ -10,9 +10,9 @@
 ## 安装说明
 
 1. 将插件放入 EXILED 插件目录：
-
- C:\Users\Administrator\AppData\Roaming\EXILED\Plugins
-
+```
+C:\Users\Administrator\AppData\Roaming\EXILED\Plugins
+```
  
 2. 重启服务器以加载插件。
 
