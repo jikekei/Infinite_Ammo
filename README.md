@@ -11,12 +11,9 @@
 
 1. 将插件放入 EXILED 插件目录：
 
-C:\Users\Administrator\AppData\Roaming\EXILED\Plugins
+ C:\Users\Administrator\AppData\Roaming\EXILED\Plugins
 
-yaml
-复制
-编辑
-
+ 
 2. 重启服务器以加载插件。
 
 ## 使用方法
