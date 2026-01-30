@@ -1,6 +1,7 @@
 # Infinite_Ammo
-
-基于 **EXILED** 框架，适用于 **SCP: Secret Laboratory 14.1** 的无限子弹插件。
+​
+基于 **EXILED** 框架，适用于 **SCP: Secret Laboratory** 的无限子弹插件。
+An unlimited ammunition plugin based on the EXILED framework for **SCP: Secret Laboratory**
 
 ## 功能介绍
 
