@@ -1,6 +1,6 @@
 using Exiled.API.Interfaces;
 
-namespace KeycardInventoryBypass.Exiled
+namespace Infinite_Ammo.Exiled
 {
     public sealed class Config : AmmoSettings, IConfig
     {

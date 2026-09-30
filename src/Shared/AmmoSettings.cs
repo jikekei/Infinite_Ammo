@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace KeycardInventoryBypass
+namespace Infinite_Ammo
 {
     public class AmmoSettings
     {

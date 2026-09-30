@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>KeycardInventoryBypass.Exiled</AssemblyName>
-    <RootNamespace>KeycardInventoryBypass.Exiled</RootNamespace>
+    <AssemblyName>Infinite_Ammo.Exiled</AssemblyName>
+    <RootNamespace>Infinite_Ammo.Exiled</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Shared\*.cs" Link="Shared\%(Filename)%(Extension)" />

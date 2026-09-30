@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exiled", "Exiled", "{B27CE3DA-4E0B-545B-30FA-18C2C07253BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeycardInventoryBypass.Exiled", "src\Exiled\KeycardInventoryBypass.Exiled.csproj", "{F4798BC7-89B7-46C8-A2BA-C9CBF805449C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infinite_Ammo.Exiled", "src\Exiled\Infinite_Ammo.Exiled.csproj", "{F4798BC7-89B7-46C8-A2BA-C9CBF805449C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LabApi", "LabApi", "{870FCA3E-9E42-3A6A-C9E0-206AAD8EA98F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeycardInventoryBypass.LabApi", "src\LabApi\KeycardInventoryBypass.LabApi.csproj", "{4E274E47-DD1D-4FE3-A33E-F8807D9660FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infinite_Ammo.LabApi", "src\LabApi\Infinite_Ammo.LabApi.csproj", "{4E274E47-DD1D-4FE3-A33E-F8807D9660FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

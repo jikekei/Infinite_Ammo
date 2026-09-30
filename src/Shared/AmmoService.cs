@@ -1,4 +1,4 @@
-namespace KeycardInventoryBypass
+namespace Infinite_Ammo
 {
     internal enum AmmoKind
     {

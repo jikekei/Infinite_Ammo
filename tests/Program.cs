@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using KeycardInventoryBypass;
+using Infinite_Ammo;
 
 internal static class Program
 {

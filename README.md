@@ -1,99 +1,71 @@
-# KeycardInventoryBypass
+# Infinite_Ammo
 
-作者：**Yiming**。SCP: Secret Laboratory 练枪服无限备用弹药插件，提供独立的 **EXILED** 和 **LabAPI** 版本。仓库沿用 `Infinite_Ammo` 名称，插件名称按内部要求统一为 `KeycardInventoryBypass`。
+为 **SCP: Secret Laboratory 练枪服**补充备用弹药。切换物品或换弹时自动恢复库存，保留正常弹匣消耗与换弹操作。作者：**Yiming**。
 
-2.0.0 重构以内部项目 `幻梦银河练枪服插件/Class1.cs`、`Class2.cs` 为功能基准，替换仓库原来的定时补弹代码。内部源目录不作修改。
+**[下载最新版本](https://github.com/jikekei/Infinite_Ammo/releases/latest)** · [更新日志](CHANGELOG.zh.md) · [构建与验证](docs/DEVELOPMENT.md)
 
-## 功能
+## 选一版，装进服务器
 
-- 切换手持物品、开始换弹时，将五种备用弹药设置为配置数量。
-- 默认 12 号霰弹为 **14**，7.62、5.56、.44、9mm 均为 **101**。
-- SCP、死亡/旁观角色和被铐玩家不获得补弹。
-- 死亡前、被铐前清空备用弹药，禁止主动丢弃弹药。
-- 已被其他插件取消的切换物品、换弹、死亡和铐人事件不会执行补弹/清空。
-- 插件卸载时注销所有事件，避免重复回调。
-
-“无限子弹”通过事件补充**备用弹药**实现；玩家仍需换弹，弹匣仍正常消耗。不定时补弹，不修改枪械射击机制。两版保留内部实现的触发时机，不新增出生或解铐补弹。已存在的备用弹药会被设置为配置数量，可能升高或降低。
-
-## 两个版本
-
-| 版本 | 编译依赖 | 输出文件 |
+| 框架 | 下载 | 编译版本 |
 | --- | --- | --- |
-| EXILED | EXILED 9.5.0 及匹配的游戏依赖（内部原项目版本） | `src/Exiled/bin/Release/net48/KeycardInventoryBypass.Exiled.dll` |
-| LabAPI | 本机专服的 LabAPI 1.1.7 及其配套游戏 Managed 文件 | `src/LabApi/bin/Release/net48/KeycardInventoryBypass.LabApi.dll` |
+| EXILED | [下载 DLL](https://github.com/jikekei/Infinite_Ammo/releases/latest/download/Infinite_Ammo.Exiled.dll) | 9.5.0 |
+| LabAPI | [下载 DLL](https://github.com/jikekei/Infinite_Ammo/releases/latest/download/Infinite_Ammo.LabApi.dll) | 1.1.7 |
 
-两版均为 .NET Framework 4.8。构建通过证明 API/类型匹配，游戏更新后应使用对应服务端依赖重新编译并在测试服验证。
+1. 停服，移除旧版无限子弹插件，包括 `KeycardInventoryBypass` DLL。
+2. 下载与你的框架对应的 **一份 DLL**。
+3. EXILED 放入 `EXILED/Plugins`；LabAPI 放入 `LabAPI/plugins/<端口>` 或 `LabAPI/plugins/global`。
+4. 重启服务器。使用存活、未被铐的人类角色切换物品或换弹，检查备用弹药恢复。
 
-## 安装
+两版均面向 .NET Framework 4.8，已用表中框架及配套游戏程序集编译。游戏更新后，请使用匹配依赖重新编译并在测试服验证。不要同时加载两版或旧版。
 
-1. 停服并移除旧的无限子弹 DLL。
-2. 按服务器使用的框架选择**其中一版**，不要同时加载两版或旧版。
-3. EXILED 版放入服务器的 `EXILED/Plugins`，配置前缀为 `keycard_inventory_bypass`。原 `无限子弹` 配置块不会自动迁移。
-4. LabAPI 版放入服务器的 `LabAPI/plugins/<端口>`（或全局 `LabAPI/plugins/global`），由 LabAPI 自动生成插件配置。
-5. 重启服务器，根据生成的配置文件调整数量。
+## 补弹规则
 
-配置项（YAML 字段格式以框架生成的文件为准）：
+| 时机或状态 | 行为 |
+| --- | --- |
+| 切换手持物品 / 开始换弹 | 将五种备用弹药设置为配置值 |
+| SCP / 死亡与旁观角色 / 被铐 | 不获得补弹 |
+| 死亡前 / 被铐前 | 清空备用弹药 |
+| 主动丢弃弹药 | 拒绝丢弃 |
 
-| 属性 | 默认值 | 说明 |
+默认数量：**12 号霰弹 14；7.62、5.56、.44、9mm 各 101**。
+
+存活且未被铐的人类玩家 → 切换物品或开始换弹 → 备用弹药恢复为配置值。
+
+已有库存会被设置为配置值，可能增加或减少。补弹依靠事件触发，不定时轮询，也不额外在出生或解铐时补弹。
+
+## 按练枪服需求调整
+
+首次加载后编辑框架生成的配置。EXILED 配置前缀为 `无限子弹`；LabAPI 使用插件自己的配置文件。YAML 字段格式以生成文件为准。
+
+| 配置属性 | 默认值 | 用途 |
 | --- | --- | --- |
 | `IsEnabled` | `true` | 启用插件 |
-| `Debug` | `false` | 输出启动调试日志 |
-| `Ammo12Gauge` | `14` | 12 号霰弹 |
-| `Nato762` | `101` | 7.62mm |
-| `Nato556` | `101` | 5.56mm |
-| `Ammo44Cal` | `101` | .44 |
-| `Nato9` | `101` | 9mm |
+| `Debug` | `false` | 启动调试日志 |
+| `Ammo12Gauge` | `14` | 12 号霰弹备用数量 |
+| `Nato762` | `101` | 7.62mm 备用数量 |
+| `Nato556` | `101` | 5.56mm 备用数量 |
+| `Ammo44Cal` | `101` | .44 备用数量 |
+| `Nato9` | `101` | 9mm 备用数量 |
 
-数量属性使用 `ushort`。修改配置后重启服务器，或使用框架的插件重新加载功能。
+修改后重启服务器或重新加载插件。如果旧配置使用 `keycard_inventory_bypass` 前缀，请将配置迁移到新生成的 `无限子弹` 配置块。
 
-## 构建
+## 验证与边界
 
-需要 .NET SDK 和 .NET Framework 4.8 Developer Pack。游戏、框架 DLL 由本机提供，不提交到仓库，也不复制到插件输出目录。
+两版 Release 构建和共享逻辑测试均已通过。测试覆盖默认数量、补弹、资格限制、清空、配置、禁用和空玩家；**尚未进行游戏内验证**。
 
-在此内部工作区内，EXILED 默认使用上级目录的 `packages/ExMod.Exiled.9.5.0/lib/net48` 与 `Server_NapCha_ui_API/bin/Debug`。LabAPI 默认使用 Steam 专服安装目录。其他电脑显式指定路径：
+死亡、铐人采用前置事件。插件尊重进入回调时已有的取消状态，后执行的其他插件仍可能取消已处理的事件。与其他插件配合时，请在测试服检查回调顺序。完整检查步骤见 [构建与验证](docs/DEVELOPMENT.md)。
 
-```powershell
-dotnet build src/Exiled/KeycardInventoryBypass.Exiled.csproj -c Release -p:ExiledReferencesDir="D:\References\Exiled-9.5.0" -p:ExiledGameManagedDir="D:\References\Game-For-Exiled"
-dotnet build src/LabApi/KeycardInventoryBypass.LabApi.csproj -c Release -p:LabApiGameManagedDir="D:\SCPServer\SCPSL_Data\Managed"
-```
+## 开发
 
-`ExiledReferencesDir` 需包含 `Exiled.API.dll`、`Exiled.Events.dll`、`Assembly-CSharp-Publicized.dll`；游戏依赖需包含匹配的 `UnityEngine.CoreModule.dll`、`Mirror.dll` 等依赖。LabAPI 的 Managed 目录需包含 `LabApi.dll`、`Assembly-CSharp.dll` 及配套游戏依赖。若编译器服务遇到输出权限问题，可加 `-p:UseSharedCompilation=false`。
-
-整个解决方案：
+配置本机依赖路径后：
 
 ```powershell
-dotnet build KeycardInventoryBypass.sln -c Release
+dotnet build Infinite_Ammo.sln -c Release
+dotnet run --project tests/Infinite_Ammo.Tests.csproj -c Release
 ```
 
-## 验证
-
-共享逻辑测试不需要启动游戏，使用 .NET 10 SDK：
-
-```powershell
-dotnet run --project tests/KeycardInventoryBypass.Tests.csproj -c Release
-```
-
-覆盖默认数量、换弹后的恢复、不符合条件时不补弹、死亡/被铐清空、配置数量、禁用状态和空玩家。
-
-测试服检查：
-
-1. 人类玩家切换物品、连续换弹，检查备用弹药与弹匣正常工作。
-2. SCP 和旁观者不补弹；被铐后备用弹药归零，切换物品不能恢复。
-3. 死亡时清空备用弹药；主动丢弃弹药被拒绝。
-4. 禁用插件后行为恢复原版；卸载/重新启用后无重复回调。
-5. 与会取消死亡/铐人事件的插件一起运行时核对事件顺序。两个版本均采用前置事件，后执行的其他插件仍可能取消已经处理过的事件。
-
-## 结构
-
-```text
-src/Shared/   共享配置和弹药规则，直接编译进两份 DLL
-src/Exiled/   EXILED 入口、事件和玩家适配
-src/LabApi/   LabAPI 入口、事件和玩家适配
-tests/       不依赖游戏的共享逻辑测试
-```
-
-移除了内部原代码中的空 Verified/RespawningTeam 回调、废弃注释及 HintServiceMeow、PluginAPI 等无关依赖。
+共享测试使用 .NET 10 SDK。依赖路径、输出位置和源码结构见 [开发文档](docs/DEVELOPMENT.md)。
 
 ## 许可
 
-沿用仓库的 [GPL-3.0 许可证](LICENSE)。LabAPI API 参考：[官方源码](https://github.com/northwood-studios/LabAPI)。
+[GPL-3.0](LICENSE) · 作者 **Yiming**。

@@ -1,7 +1,7 @@
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Handlers;
 
-namespace KeycardInventoryBypass.LabApi
+namespace Infinite_Ammo.LabApi
 {
     internal sealed class EventHandlers
     {

@@ -1,16 +1,16 @@
 using System;
 using Exiled.API.Features;
 
-namespace KeycardInventoryBypass.Exiled
+namespace Infinite_Ammo.Exiled
 {
     public sealed class Plugin : Plugin<Config>
     {
         private EventHandlers handlers;
 
-        public override string Name => "KeycardInventoryBypass";
-        public override string Author => "Yming";
+        public override string Name => "Infinite_Ammo";
+        public override string Author => "Yiming";
         public override string Prefix => "无限子弹";
-        public override Version Version => new Version(2, 0, 0);
+        public override Version Version => new Version(2, 0, 1);
         public override Version RequiredExiledVersion => new Version(9, 5, 0);
 
         public override void OnEnabled()

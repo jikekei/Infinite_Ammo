@@ -2,7 +2,7 @@ using Exiled.API.Enums;
 using Exiled.API.Features;
 using PlayerRoles;
 
-namespace KeycardInventoryBypass.Exiled
+namespace Infinite_Ammo.Exiled
 {
     internal sealed class AmmoPlayer : IAmmoPlayer
     {

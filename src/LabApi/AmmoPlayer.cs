@@ -1,7 +1,7 @@
 using LabApi.Features.Wrappers;
 using PlayerRoles;
 
-namespace KeycardInventoryBypass.LabApi
+namespace Infinite_Ammo.LabApi
 {
     internal sealed class AmmoPlayer : IAmmoPlayer
     {

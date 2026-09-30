@@ -1,7 +1,7 @@
 using Exiled.Events.EventArgs.Player;
 using PlayerEvents = Exiled.Events.Handlers.Player;
 
-namespace KeycardInventoryBypass.Exiled
+namespace Infinite_Ammo.Exiled
 {
     internal sealed class EventHandlers
     {
