@@ -1,5 +1,27 @@
 # 更新日志
 
+## 2.0.1 - 2026-09-30
+
+### 名称与安装
+
+- 两版插件名称恢复为 **Infinite_Ammo**，作者统一为 **Yiming**。
+- DLL、工程文件、解决方案和代码命名空间统一使用 `Infinite_Ammo`。
+- EXILED 使用当前实现的 `无限子弹` 配置前缀；若旧配置使用 `keycard_inventory_bypass`，请迁移到新生成的配置块。
+- 升级时移除旧的 `KeycardInventoryBypass` DLL，只安装 EXILED 或 LabAPI 其中一版。
+
+### 项目介绍
+
+- 按 README 技能重排纯 Markdown 介绍：版本下载、安装、规则、配置与验证边界。
+- 使用文字和表格展示事件触发与默认弹药数量，不添加 SVG 或其他图片。
+- 将详细构建及测试服检查说明移到 `docs/DEVELOPMENT.md`。
+
+### 验证与下载
+
+- 保留 v2.0.0 的事件补弹逻辑，EXILED 9.5.0 / LabAPI 1.1.7 编译目标不变。
+- 两版 Release 构建及共享逻辑测试通过；尚未进行游戏内验证。
+- `Infinite_Ammo.Exiled.dll`：EXILED 版。
+- `Infinite_Ammo.LabApi.dll`：LabAPI 版。
+
 ## 2.0.0 - 2026-09-30
 
 ### 升级说明
