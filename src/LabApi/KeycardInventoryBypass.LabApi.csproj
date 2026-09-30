@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>KeycardInventoryBypass.LabApi</AssemblyName>
+    <RootNamespace>KeycardInventoryBypass.LabApi</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\*.cs" Link="Shared\%(Filename)%(Extension)" />
+    <Reference Include="LabApi"><HintPath>$(LabApiGameManagedDir)\LabApi.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(LabApiGameManagedDir)\Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(LabApiGameManagedDir)\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Mirror"><HintPath>$(LabApiGameManagedDir)\Mirror.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <Target Name="CheckReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(LabApiGameManagedDir)\LabApi.dll')" Text="Set LabApiGameManagedDir to the SCP:SL Managed directory containing LabAPI 1.1.7." />
+  </Target>
+</Project>

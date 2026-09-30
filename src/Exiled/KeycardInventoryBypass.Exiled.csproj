@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>KeycardInventoryBypass.Exiled</AssemblyName>
+    <RootNamespace>KeycardInventoryBypass.Exiled</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\*.cs" Link="Shared\%(Filename)%(Extension)" />
+    <Reference Include="Exiled.API"><HintPath>$(ExiledReferencesDir)\Exiled.API.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Exiled.Events"><HintPath>$(ExiledReferencesDir)\Exiled.Events.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(ExiledReferencesDir)\Assembly-CSharp-Publicized.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(ExiledGameManagedDir)\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Mirror"><HintPath>$(ExiledGameManagedDir)\Mirror.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <Target Name="CheckReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(ExiledReferencesDir)\Exiled.API.dll')" Text="Set ExiledReferencesDir to the EXILED 9.5.0 reference directory." />
+    <Error Condition="!Exists('$(ExiledGameManagedDir)\UnityEngine.CoreModule.dll')" Text="Set ExiledGameManagedDir to the matching SCP:SL Managed directory." />
+  </Target>
+</Project>
