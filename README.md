@@ -1,7 +1,5 @@
 # Infinite_Ammo
 
-为 **SCP: Secret Laboratory 练枪服**补充备用弹药。切换物品或换弹时自动恢复库存，保留正常弹匣消耗与换弹操作。作者：**Yiming**。
-
 **[下载最新版本](https://github.com/jikekei/Infinite_Ammo/releases/latest)** · [更新日志](CHANGELOG.zh.md) · [构建与验证](docs/DEVELOPMENT.md)
 
 ## 选一版，装进服务器
