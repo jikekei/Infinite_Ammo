@@ -4,7 +4,6 @@
 
 ### 升级说明
 
-- 插件名称统一为 **KeycardInventoryBypass**，作者为 **Yiming**。
 - EXILED 配置前缀改为 `keycard_inventory_bypass`，原 `无限子弹` 配置不会自动迁移。
 - 使用内部最新版的事件补弹逻辑替换旧版定时补弹：切换物品、换弹时恢复备用弹药。弹匣仍正常消耗，仍需换弹。
 - 安装前移除旧插件，并且只加载 EXILED 或 LabAPI 其中一版。
